@@ -1,0 +1,281 @@
+CREATE TABLE Users(
+    Username varchar(15) NOT NULL,
+    Password varchar(100)NOT NULL,
+	Name varchar(15),
+	Email varchar,
+	Age int,
+	bestScore int,
+	Gender varchar(15),
+	Height DOUBLE PRECISION ,
+	Weight DOUBLE PRECISION ,
+	HeightUnitPreference varchar(2),
+	WeightUnitPreference varchar(2),
+	PRIMARY KEY (Username)
+);
+
+CREATE TABLE KeyValues(
+valueName varchar(25) NOT NULL,
+Value DOUBLE PRECISION,
+PRIMARY KEY(valueName)
+);
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('BMI_UNDERWEIGHT',18.5 );
+
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('BMI_NORMAL_lower',18.5 );
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('BMI_NORMAL_upper',24.9 );
+
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('BMI_OVERWEIGHT_lower',25 );
+
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('BMI_OVERWEIGHT_upper',29.9 );
+
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('BMI_OBESE_lower',30 );
+
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('BMI_OBESE_upper',39.9 );
+
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('BMI_MORBIDLY_OBESE_upper',40 );
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('HEIGHT_MAX_CM',250 );
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('HEIGHT_MAX_IN',96 );
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('WEIGHT_MAX_KG',120 );
+
+INSERT INTO KeyValues(valueName, Value)
+VALUES ('WEIGHT_MAX_LB',280 );
+
+
+
+CREATE TABLE FitBitData(
+Username varchar(15) NOT NULL,
+Date date NOT NULL,
+steps DOUBLE PRECISION,
+stepGoal DOUBLE PRECISION,
+distance DOUBLE PRECISION ,
+distanceGoal DOUBLE PRECISION ,
+calories DOUBLE PRECISION,
+caloriesGoal DOUBLE PRECISION,
+activeMinutes DOUBLE PRECISION,
+restingHR DOUBLE PRECISION ,
+PRIMARY KEY(Username, Date ),
+FOREIGN KEY (Username) REFERENCES Users
+ON DELETE CASCADE
+ON UPDATE CASCADE
+);
+
+
+CREATE TABLE FitBitData2(
+Username varchar(15) NOT NULL,
+Date date NOT NULL,
+steps varchar(40),
+stepGoal varchar(40),
+distance varchar(40) ,
+distanceGoal varchar(40) ,
+calories varchar(40),
+caloriesGoal varchar(40),
+activeMinutes varchar(40),
+restingHR varchar(40) ,
+PRIMARY KEY(Username, Date ),
+FOREIGN KEY (Username) REFERENCES Users
+ON DELETE CASCADE
+ON UPDATE CASCADE
+);
+
+
+
+CREATE TABLE FitBitUSERTOKENS(
+Username varchar(15) NOT NULL PRIMARY KEY,
+token varchar(400),
+FOREIGN KEY (Username) REFERENCES Users
+ON DELETE CASCADE
+ON UPDATE CASCADE
+);
+
+
+
+CREATE TABLE ExerciseType(
+	Type varchar(15) NOT NULL PRIMARY KEY
+);
+
+
+
+CREATE TABLE SleepTrackerTable(
+    Username varchar(15) NOT NULL,
+    Date Date,
+	Value DOUBLE PRECISION ,
+	FOREIGN KEY (Username) REFERENCES Users(Username)
+);
+
+
+CREATE TABLE WaterTrackerTable(
+    Username varchar(15) NOT NULL,
+    Date Date,
+	Value DOUBLE PRECISION ,
+	FOREIGN KEY (Username) REFERENCES Users(Username)
+);
+
+CREATE TABLE Groups
+(
+	GroupName varchar(15) NOT NULL PRIMARY KEY,
+	Admin varchar(15)
+);
+
+CREATE TABLE GroupUsers
+(
+	GroupName varchar(15) NOT NULL,
+	Username varchar(15) NOT NULL,
+	FOREIGN KEY (GroupName) REFERENCES Groups
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+	PRIMARY KEY(GroupName ,Username ),
+	FOREIGN KEY (Username) REFERENCES Users
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+
+CREATE TABLE GroupGoals
+(
+	GroupName varchar(15) NOT NULL,
+	GoalName varchar(15) NOT NULL PRIMARY KEY,
+	ExerciseType varchar(15) NOT NULL,
+	Duration float NOT NULL,
+	StartDate date NOT NULL,
+	EndDate date NOT NULL,
+	FOREIGN KEY (GroupName) REFERENCES Groups
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE ExerciseTracker
+(
+	Username varchar(15) NOT NULL,
+	ExerciseDate date NOT NULL,
+	ExerciseType varchar(15) NOT NULL,
+	ExerciseStartTime time NOT NULL,
+	ExerciseEndTime time NOT NULL,
+	PRIMARY KEY(Username,ExerciseDate,ExerciseType,ExerciseStartTime),
+	FOREIGN KEY (Username) REFERENCES Users(Username)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE ExerciseGoal
+(
+	Username varchar(15) NOT NULL PRIMARY KEY,
+	Goal float NOT NULL,
+	GoalStart date,
+	GoalEnd date,
+	FOREIGN KEY (Username) REFERENCES Users(Username)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE WeightTrackerTable(
+    Username varchar(15) NOT NULL,
+    Date Date,
+    targetWeight DOUBLE PRECISION,
+    currentWeight DOUBLE PRECISION,
+    FOREIGN KEY (Username) REFERENCES Users(Username)
+);
+
+
+CREATE TABLE FoodTrackerTable(
+    Username varchar(15) NOT NULL,
+    Date Date,
+    MealType varchar(15),
+    FoodName varchar(15),
+    Calorie int,
+    FOREIGN KEY (Username) REFERENCES Users(Username)
+);
+
+
+
+CREATE TABLE Meals
+(
+    id SERIAL,
+    Name varchar(15),
+    calorie int,
+    PRIMARY KEY(id)
+);
+
+create table reminder(
+username varchar not null,
+	Date date not null,
+	time time not null,
+	Event varchar not null,
+	Remarks varchar,
+	Type varchar not null,
+	email boolean not null,
+	constraint reminder_user_username_fkey foreign key(username)
+	references users(username)
+	 ON UPDATE cascade
+	ON DELETE cascade,
+	primary key(username,date,time,event)
+	
+);
+
+Create table quiz(
+question varchar not null,
+selection1 varchar not null,
+selection2 varchar not null,
+selection3 varchar not null,
+selection4 varchar not null,
+number integer not null
+);
+
+insert into quiz (question,selection1,selection2,selection3,selection4,number)
+Values('What are some things you can do to help support your brain health?',
+	   'Eating nutritious foods',
+	   'Regular physical activity',
+	   'Doing mental exercises like crossword puzzles and other games',
+	  'All of the above',3),
+	  ('How can you ensure that your wishes about your health care are known by your close family or friends?',
+	  'By writing down my wishes regarding end of life care and specific medical procedures.',
+	  'By choosing a decision maker I can trust.',
+	  'By making important health care decisions now',
+	   'A,B and C are correct.',
+	  3),
+	  ('Depression in older adults can be hard to detect. However the earlier it is detected, the easier it can be to treat. Which of the following are symptoms of depression?',
+	  'Decreased interest and pleasure in usual activities',
+	  'Reports of pain',
+	  'Complaints about memory problems',
+	  'All of the above',3),
+	  ('What is the recommended amount of physical activity for adults per week (as per the Canadian Physical Activity Guidelines)?',
+	  '60 minutes of moderate to vigorous intensity aerobic physical activity per week',
+	  '150 minutes of moderate to vigorous',
+	  '120 minutes of moderate to vigorous',
+	  '90 minutes of moderate to vigorous',1),
+	  ('Eating a healthy diet can help reduce the risk of developing health problems, such as:',
+	  'Eating nutritious foods',
+	  'Regular physical activity',
+	  'Doing mental exercises like crossword puzzles and other games',
+	   'All of the above',3),
+	  ('You can help to prevent falls by:',
+	  'Some forms of cancer',
+	  'High blood pressure',
+	  'Heart & respiratory disease',
+	  'All of the above',4),
+	  ('What are some things you can do to help support your brain health?',
+	  'Scheduling regular vision checkups and correcting any vision problems',
+	  'Maintaining flexibility, balance and increasing muscle strength',
+	  'Reducing trip and slip hazards in your home and outdoors',
+	  'All of the above',4),
+	  ('Did you know that if everyone ate five to ten servings of vegetables and fruit each day, the current cancer rate could be reduced by as much as:',
+	  '20%','15%','10%','5%',0);

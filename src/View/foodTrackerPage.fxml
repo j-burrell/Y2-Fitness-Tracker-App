@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('water.jpg'); -fx-background-size: stretch; -fx-background-position: center center; -fx-background-repeat: stretch;  " stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.food.FoodTrackerController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <MenuBar fx:id="menuBar1" style="-fx-background-color: rgba(255, 255, 255, 0.5); -fx-alignment: CENTER;" GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+         <menus>
+            <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToHome" text="Home" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Water Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToWaterTracker" text="WaterTracker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToWaterTrackerReport" text="WaterTracker Report" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Weight Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToWeightTracker" text="WeightTacker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToWeightTrackerReport" text="WeightTracker Report" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Food Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToFoodTracker" text="FoodTracker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToFoodTrackerReport" text="FoodTracker Report" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Sleep Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToSleepTracker" text="SleepTracker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToSleepTrackerReport" text="SleepTracker Report" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Exercise Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToExercise" text="Exercise Tracker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToExerciseGoal" text="Exercise goal" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToExerciseReport" text="ExerciseTrackerReport" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Groups">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToGroup" text="Group Home" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Reminder">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToReminder" text="Reminder" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToAppReminder" text="Medical Appointment" />
+               </items>
+            </Menu>
+
+            <Menu mnemonicParsing="false" text="FitBit">
+               <items>
+                  <MenuItem fx:id="fitBitAuthButton" mnemonicParsing="false" onAction="#goToFitBit" text="FitBit Authorize" />
+                  <MenuItem fx:id="fitBitStepsButton" mnemonicParsing="false" onAction="#goToFitBitSteps" text="FitBit Data" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="tools">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToExam" text="Exam" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToMusic" text="Music Payer" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#logout" text="Logout">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <DatePicker fx:id="datePicker" onAction="#changeDate" GridPane.columnIndex="10" GridPane.columnSpan="4" GridPane.rowIndex="2" />
+      <Label text="Breakfast" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <Label text="Lunch" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label text="Dinner" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+      <Label text="Snack" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+      <ComboBox fx:id="breakfastCombo" prefWidth="150.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <TextField fx:id="breakfastCount" text="1" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+      <TextArea fx:id="mealListTxt" prefHeight="164.0" prefWidth="130.0" GridPane.columnIndex="10" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="3">
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="10.0" />
+         </GridPane.margin>
+      </TextArea>
+      <ComboBox fx:id="lunchCombo" prefWidth="150.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <ComboBox fx:id="dinnerCombo" prefWidth="150.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <ComboBox fx:id="snackCombo" prefWidth="150.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <TextField fx:id="lunchCount" text="1" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+      <TextField fx:id="dinnerCount" text="1" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+      <TextField fx:id="snackCount" text="1" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="4">
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" />
+         </GridPane.margin>
+      </TableView>
+      <TextField fx:id="name" prefHeight="30.0" prefWidth="76.0" promptText="Name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="calorie" prefHeight="30.0" promptText="Calorie" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin>
+      </TextField>
+      <Button fx:id="addMealType" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" text="Add" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+      <Button fx:id="setMeal" mnemonicParsing="false" text="Set" GridPane.columnIndex="13" GridPane.rowIndex="6" />
+      <Label prefHeight="20.0" prefWidth="67.0" text="Amount:" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="amount" text="00" GridPane.columnIndex="12" GridPane.rowIndex="6" />
+      <GridPane fx:id="errorTextFlow" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: rgba(255, 255, 255, 0.5);" visible="false" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <children>
+            <Text fx:id="errorAmount" strokeType="OUTSIDE" strokeWidth="0.0" text="test" textAlignment="CENTER" wrappingWidth="78.66668701171875" GridPane.rowIndex="4" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+      <Label scaleX="2.0" scaleY="2.0" style="-fx-background-color: rgba(255, 255, 255, 0.5);" text="Food Tracker" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+   </children>
+</GridPane>

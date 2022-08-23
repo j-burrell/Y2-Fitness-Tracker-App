@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('water.jpg'); -fx-background-size: stretch; -fx-background-position: center center; -fx-background-repeat: stretch;  " stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.food.FoodTrackerReportController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="20.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <MenuBar fx:id="menuBar" style="-fx-background-color: rgba(255, 255, 255, 0.5); -fx-alignment: CENTER;" GridPane.columnSpan="8" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+        <menus>
+          <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToHome" text="Home" />
+               </items></Menu>
+          <Menu mnemonicParsing="false" text="Water Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToWaterTracker" text="WaterTracker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToWaterTrackerReport" text="WaterTracker Report" />
+               </items></Menu>
+          <Menu mnemonicParsing="false" text="Weight Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToWaterTracker" text="WaterTracker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToWaterTrackerReport" text="WaterTracker Report" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Food Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToFoodTracker" text="FoodTracker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToFoodTrackerReport" text="FoodTracker Report" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Sleep Tracker">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToSleepTracker" text="SleepTracker" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToSleepTrackerReport" text="SleepTracker Report" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Exercise Tracker">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#goToExercise" text="Exercise Tracker" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToExerciseGoal" text="Exercise goal" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToExerciseReport" text="ExerciseTrackerReport" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Groups">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#goToGroup" text="Group Home" />
+                </items></Menu>
+            <Menu mnemonicParsing="false" text="Reminder">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#goToReminder" text="Reminder" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToAppReminder" text="Medical Appointment" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="FitBit">
+               <items>
+                  <MenuItem fx:id="fitBitAuthButton" mnemonicParsing="false" onAction="#goToFitBit" text="FitBit Authorize" />
+                  <MenuItem fx:id="fitBitStepsButton" mnemonicParsing="false" onAction="#goToFitBitSteps" text="FitBit Data" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="tools">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#goToExam" text="Exam" />
+                    <MenuItem mnemonicParsing="false" onAction="#goToMusic" text="Music Payer" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#logout" text="Logout">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+               </items></Menu>
+
+        </menus>
+      </MenuBar>
+      <Text fx:id="dateError" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date is not before End Date" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <BarChart fx:id="bc" animated="false" layoutX="310.0" layoutY="63.0" prefHeight="94.0" prefWidth="300.0" style="-fx-horizontal-grid-lines-visible: false; -fx-vertical-grid-lines-visible: false;" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="5" GridPane.rowSpan="2">
+         <xAxis>
+            <CategoryAxis animated="false" side="BOTTOM" fx:id="xAxis1">
+               <tickLabelFont>
+                  <Font name="System Bold" size="8.0" />
+               </tickLabelFont></CategoryAxis>
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="yAxis1" animated="false" side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <LineChart fx:id="lc" animated="false" prefHeight="67.0" prefWidth="300.0" style="-fx-horizontal-grid-lines-visible: false; -fx-vertical-grid-lines-visible: false;" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="1" GridPane.rowSpan="4">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <GridPane style="-fx-background-color: rgba(255, 255, 255, 0.5); -fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="4">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <DatePicker fx:id="startDate" promptText="StartDate" scaleX="0.9" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
+            <DatePicker fx:id="endDate" promptText="EndDate" scaleX="0.9" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="generateReportButton" mnemonicParsing="false" onAction="#getReport" text="Generate" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button fx:id="clearChartButton" mnemonicParsing="false" onAction="#clearChart" text="Clear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <DatePicker fx:id="singleDay" onAction="#changeDate" onMouseDragReleased="#changeDate" prefHeight="30.0" prefWidth="127.0" promptText="SingleDay" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Label scaleX="2.0" scaleY="2.0" style="-fx-background-color: rgba(255, 255, 255, 0.5);" text="Food Tracker Report" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+   </children>
+</GridPane>

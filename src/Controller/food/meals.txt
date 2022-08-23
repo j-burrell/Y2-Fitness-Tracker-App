@@ -1,0 +1,9 @@
+Bread,80
+Meat,80
+Vegetables,40
+Fruits,40
+Rice,100
+Test,123
+Test2,111
+Test3,444
+chicken,200
